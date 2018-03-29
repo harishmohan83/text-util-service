@@ -23,11 +23,11 @@ curl -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' -
 
 **Curl command to read text**
 
-curl -X GET -H 'Accept: application/json' http://localhost:8080/util/v1/text/textId/<text id from create response>
+curl -X GET -H 'Accept: application/json' http://localhost:8080/util/v1/text/textId/[text id from create response]
 
 **Curl command to delete text**
 
-curl -X DELETE -H 'Content-Type: application/json' -H 'Accept: application/json' -d '{"text_id": "<text id from create response>"}' http://localhost:8080/util/v1/text
+curl -X DELETE -H 'Content-Type: application/json' -H 'Accept: application/json' -d '{"text_id": "[text id from create response]"}' http://localhost:8080/util/v1/text
 
 **Curl command to read sample json**
 
