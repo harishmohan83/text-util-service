@@ -21,26 +21,26 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class JsonPlaceHolderController {
 
-	@Autowired
-	private JsonPlaceHolderService jsonPlaceHolderService;
+    @Autowired
+    private JsonPlaceHolderService jsonPlaceHolderService;
 
-	/**
-	 * Rest controller method to fetch the json place holder data
-	 * 
-	 * @param void
-	 * @return {@link JsonPlaceholders}
-	 */
-	@ApiOperation(value = "Fetch Json Place Holder Data")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = String.class),
-			@ApiResponse(code = 400, message = "Validation error"),
-			@ApiResponse(code = 500, message = "Internal server error") })
-	@RequestMapping(value = "/json", produces = { MediaType.APPLICATION_XML_VALUE,
-			MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-	public ResponseEntity<String> fetchjsonPlaceHolderData() {
-		log.debug("Received request to fetch json place holder data");
-		String jsonString = jsonPlaceHolderService.service(" ");
-		log.debug("Successfully completed request to fetch json place holder data");
-		return new ResponseEntity<>(jsonString, HttpStatus.OK);
-	}
+    /**
+     * Rest controller method to fetch the json place holder data
+     * 
+     * @param void
+     * @return {@link JsonPlaceholders}
+     */
+    @ApiOperation(value = "Fetch Json Place Holder Data")
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = String.class),
+            @ApiResponse(code = 400, message = "Validation error"),
+            @ApiResponse(code = 500, message = "Internal server error") })
+    @RequestMapping(value = "/jsonplaceholder", produces = { MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public ResponseEntity<String> fetchjsonPlaceHolderData() {
+        log.debug("Received request to fetch json place holder data");
+        String jsonString = jsonPlaceHolderService.service("");
+        log.debug("Successfully completed request to fetch json place holder data");
+        return new ResponseEntity<>(jsonString, HttpStatus.OK);
+    }
 
 }

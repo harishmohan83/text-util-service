@@ -4,13 +4,12 @@ import static org.testng.Assert.fail;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.testng.Assert;
 import org.text.util.entity.Schema;
 
@@ -43,6 +42,12 @@ public class CassandraConfiguration {
 
     @Value("${datasource.cassandra.password}")
     private String password;
+    
+    @Value("ddls/utils_keyspace.ddl")
+    private ClassPathResource utilsKeyspace;
+    
+    @Value("ddls/text_util.ddl")
+    private ClassPathResource textUtil;
 
     /**
      * Initializes inmemory cassandra data base
@@ -95,8 +100,8 @@ public class CassandraConfiguration {
      */
     private void createSchema(Cluster cluster) {
         Session session = cluster.connect();
-        session.execute(getDataFromFile("src/test/resources/ddls/utils_keyspace.ddl"));
-        session.execute(getDataFromFile("src/test/resources/ddls/text_util.ddl"));
+        session.execute(getDataFromFile(utilsKeyspace));
+        session.execute(getDataFromFile(textUtil));
         session.close();
     }
 
@@ -107,16 +112,16 @@ public class CassandraConfiguration {
      *            the resource path
      * @return the string
      */
-    private String getDataFromFile(String dataFileLocation) {
+    private String getDataFromFile(ClassPathResource resource) {
         StringBuilder data = new StringBuilder();
         try (BufferedReader fileReader = new BufferedReader(
-                new InputStreamReader(Files.newInputStream(Paths.get(dataFileLocation))))) {
+                new InputStreamReader(resource.getInputStream()))) {
             String line;
             while ((line = fileReader.readLine()) != null) {
                 data.append(line).append("\r\n");
             }
         } catch (Exception e) {
-            log.error("Cannot open " + dataFileLocation, e);
+            log.error("Error reading ddl file", e);
             fail();
         }
         return data.toString();

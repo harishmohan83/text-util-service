@@ -87,7 +87,7 @@ public class TextUtilController {
     @ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = TextResponse.class),
             @ApiResponse(code = 400, message = "Validation error"),
             @ApiResponse(code = 500, message = "Internal server error") })
-    @RequestMapping(value = "/text/{textId}", produces = { MediaType.APPLICATION_XML_VALUE,
+    @RequestMapping(value = "/text/textId/{textId}", produces = { MediaType.APPLICATION_XML_VALUE,
             MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public ResponseEntity<TextResponse> readText(@PathVariable("textId") String textId) {
         log.debug("Received request to read text");
