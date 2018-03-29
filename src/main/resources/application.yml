@@ -1,0 +1,26 @@
+datasource: 
+  cassandra:
+    ip: 127.0.0.1
+    port: 9142
+    dc: datacenter1
+    userId: test
+    password: test
+gateway:
+  jsonplaceholder:
+    url: https://jsonplaceholder.typicode.com/posts/
+httpclient:
+  connection:
+    max:
+      number: 200
+      perroute: 200
+    timeout:
+      millis: 2000
+    request:
+      timeout:
+        millis: 2000
+    socket:
+      timeout:
+        millis: 2000
+    keepalive:
+      timeout:
+        millis: 600000

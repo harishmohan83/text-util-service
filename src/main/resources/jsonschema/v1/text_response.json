@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "javaType": "org.text.util.binding.v1.TextResponse",
+    "description": "Schema for text response",
+    "properties": {
+    	"text_id": {
+            "type": "string"
+         },
+    	"arbitrary_text": {
+            "type": "string"
+         },
+         "errors": {
+        	 "type": "array",
+        	 "items": {
+        		 "type": "object",
+        		 "properties": {
+           			 "code": {
+           				 "type": "integer"
+           			 },
+           			 "description": {
+           				 "type": "string"
+           			 }
+                 }
+        	 }
+         }
+    }
+}

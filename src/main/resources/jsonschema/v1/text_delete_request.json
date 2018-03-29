@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "javaType": "org.text.util.binding.v1.TextDeleteRequest",
+    "description": "Schema for text response",
+    "properties": {
+    	"text_id": {
+            "type": "string"
+         }
+    }
+}

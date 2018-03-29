@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "javaType": "org.text.util.binding.v1.TextCreateRequest",
+    "description": "Schema to create new text",
+    "properties": {
+        "arbitrary_text": {
+            "type": "string"
+         }
+    }
+}

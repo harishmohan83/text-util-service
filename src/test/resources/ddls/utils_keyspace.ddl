@@ -1,0 +1,1 @@
+CREATE KEYSPACE IF NOT EXISTS utils WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }
