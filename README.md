@@ -1,6 +1,7 @@
 # text-util-service #
 Text Util Service has apis to support creation, read and deletion of text. It also provide an api to fetch sample json data. The service uses an in-memory cassandra database.
-> **Warning: The data won't be persisted to disk **
+> **Warning: The data won't be persisted to disk **</br></br>
+Api Specification is available here **https://text-util-service-specifications-1.api-docs.io/1.0/util/read-text**
 
 ## Pre-Requisites #
 Install JDK 1.8.0_XXX or later
