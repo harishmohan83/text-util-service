@@ -1,0 +1,171 @@
+swagger: '2.0'
+info:
+  description: >-
+    Text Util Service has apis to support creation, read and deletion of text.
+    It also provide an api to fetch sample json data. The service uses an
+    in-memory cassandra database.
+  version: '1.0'
+  title: Text Util Service Specifications
+host: '192.168.1.86:8080'
+basePath: /
+tags:
+  - name: Text Utils
+    description: 'api to fetch the json place holder data '
+paths:
+  /util/v1/jsonplaceholder:
+    get:
+      tags:
+        - Text Utils
+      summary: Fetch Json Place Holder Data
+      operationId: fetchjsonPlaceHolderDataUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/xml
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal server error
+  /util/v1/text:
+    post:
+      tags:
+        - Text Utils
+      summary: Create Text
+      operationId: createTextUsingPOST
+      consumes:
+        - application/xml
+        - application/json
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - in: body
+          name: textCreateRequest
+          description: textCreateRequest
+          required: true
+          schema:
+            $ref: '#/definitions/TextCreateRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TextResponse'
+        '201':
+          description: Created
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+        - Text Utils
+      summary: Delete Text
+      operationId: deleteTextUsingDELETE
+      consumes:
+        - application/xml
+        - application/json
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - in: body
+          name: textDeleteRequest
+          description: textDeleteRequest
+          required: true
+          schema:
+            $ref: '#/definitions/TextDeleteRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TextResponse'
+        '204':
+          description: No Content
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal server error
+  '/util/v1/text/textId/{textId}':
+    get:
+      tags:
+        - Text Utils
+      summary: Read Text
+      operationId: readTextUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: textId
+          in: path
+          description: textId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TextResponse'
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal server error
+definitions:
+  TextCreateRequest:
+    type: object
+    properties:
+      arbitrary_text:
+        type: string
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      description:
+        type: string
+  TextResponse:
+    type: object
+    properties:
+      arbitrary_text:
+        type: string
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/Error'
+      text_id:
+        type: string
+  TextDeleteRequest:
+    type: object
+    properties:
+      text_id:
+        type: string

@@ -168,6 +168,7 @@
 										<exclude>org.text.util.exceptions.*</exclude>
 										<exclude>info.archinnov.achilles.generated.*</exclude>
 										<exclude>org.text.util.binding.*</exclude>
+										<exclude>org.text.util.documentation.*</exclude>
 									</excludes>
 									<limits>
 										<limit>

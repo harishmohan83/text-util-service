@@ -24,3 +24,8 @@ httpclient:
     keepalive:
       timeout:
         millis: 600000
+springfox:
+ documentation:
+   swagger:
+     v2:
+       path: /util/v1/api-docs
