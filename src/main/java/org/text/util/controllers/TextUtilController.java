@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.text.util.binding.v1.TextCreateRequest;
 import org.text.util.binding.v1.TextDeleteRequest;
 import org.text.util.binding.v1.TextResponse;
+import org.text.util.documentation.Notes;
 import org.text.util.domain.TextDomain;
 import org.text.util.services.CreateTextService;
 import org.text.util.services.DeleteTextService;
@@ -61,7 +62,7 @@ public class TextUtilController {
      * @param textCreateRequest
      * @return {@link TextResponse}
      */
-    @ApiOperation(value = "Create Text")
+    @ApiOperation(value = "Create Text", notes = Notes.TEXT_CREATE)
     @ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = TextResponse.class),
             @ApiResponse(code = 400, message = "Validation error"),
             @ApiResponse(code = 500, message = "Internal server error") })
@@ -83,7 +84,7 @@ public class TextUtilController {
      * @param text
      * @return {@link TextResponse}
      */
-    @ApiOperation(value = "Read Text")
+    @ApiOperation(value = "Read Text", notes = Notes.TEXT_READ)
     @ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = TextResponse.class),
             @ApiResponse(code = 400, message = "Validation error"),
             @ApiResponse(code = 500, message = "Internal server error") })
@@ -104,7 +105,7 @@ public class TextUtilController {
      * @param textDeleteRequest
      * @return {@link TextResponse}
      */
-    @ApiOperation(value = "Delete Text")
+    @ApiOperation(value = "Delete Text", notes = Notes.TEXT_DELETE)
     @ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = TextResponse.class),
             @ApiResponse(code = 400, message = "Validation error"),
             @ApiResponse(code = 500, message = "Internal server error") })

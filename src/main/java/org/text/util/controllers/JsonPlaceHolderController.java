@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.text.util.documentation.Notes;
 import org.text.util.services.JsonPlaceHolderService;
 
 import io.swagger.annotations.Api;
@@ -30,7 +31,7 @@ public class JsonPlaceHolderController {
      * @param void
      * @return {@link JsonPlaceholders}
      */
-    @ApiOperation(value = "Fetch Json Place Holder Data")
+    @ApiOperation(value = "Fetch Json Place Holder Data", notes = Notes.FETCH_SAMPLE_JSON)
     @ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = String.class),
             @ApiResponse(code = 400, message = "Validation error"),
             @ApiResponse(code = 500, message = "Internal server error") })
