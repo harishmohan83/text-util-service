@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 8080
 datasource: 
   cassandra:
     ip: 127.0.0.1
