@@ -33,3 +33,23 @@ curl -X DELETE -H 'Content-Type: application/json' -H 'Accept: application/json'
 **Curl command to read sample json**
 
 curl -X GET -H 'Accept: application/json' http://localhost:8080/util/v1/jsonplaceholder
+
+## Deploying Service to AWS using EB  CLI #
+1) Create an AWS account, if you don't have one
+2) Set up EB CLI
+3) Go to the root folder of your project and execute the following command. This will deploy the service to AWS </br>
+**eb create --envvars PORT=8080**
+4) Use the following command to check the status of the deployment</br>
+**eb status text-util-service**
+5) Use the following curl commands to access the application when it is ready.
+
+curl -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' -d  '{"arbitrary_text": "hello"}' http://[load balancer name]/util/v1/text</br>
+
+For example: curl -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' -d  '{"arbitrary_text": "hello"}' http://text-util-service-dev.us-east-1.elasticbeanstalk.com/util/v1/text </br>
+
+curl -X GET -H 'Accept: application/json' http://[load balancer name]/util/v1/text/textId/[text id from create response]</br>
+
+curl -X DELETE -H 'Content-Type: application/json' -H 'Accept: application/json' -d '{"text_id": "[text id from create response]"}' http://[load balancer name]/util/v1/text</br>
+
+
+curl -X GET -H 'Accept: application/json' http://[load balancer name]/util/v1/jsonplaceholder
